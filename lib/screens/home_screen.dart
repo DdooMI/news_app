@@ -19,10 +19,10 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        padding: EdgeInsets.symmetric(vertical: 35.h, horizontal: 35.w),
         decoration: const BoxDecoration(
-            image:
-                DecorationImage(image: AssetImage(AppImages.mainBackground))),
+            image: DecorationImage(
+                image: AssetImage(AppImages.mainBackground), fit: BoxFit.fill)),
+        padding: EdgeInsets.symmetric(vertical: 35.h, horizontal: 35.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

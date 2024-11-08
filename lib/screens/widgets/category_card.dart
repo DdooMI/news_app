@@ -23,32 +23,35 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.only(
-              topLeft: topLeft,
-              topRight: topRight,
-              bottomLeft: bottomLeft,
-              bottomRight: bottomRight)),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            image,
-            height: 120.h,
-            width: 130.w,
-            fit: BoxFit.contain,
-          ),
-          Text(
-            title,
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall!
-                .copyWith(color: Colors.white),
-          )
-        ],
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.only(
+                topLeft: topLeft,
+                topRight: topRight,
+                bottomLeft: bottomLeft,
+                bottomRight: bottomRight)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              image,
+              height: 120.h,
+              width: 130.w,
+              fit: BoxFit.contain,
+            ),
+            Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleSmall!
+                  .copyWith(color: Colors.white),
+            )
+          ],
+        ),
       ),
     );
   }
