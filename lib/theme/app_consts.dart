@@ -51,11 +51,11 @@ class AppConsts {
     "assets/science.png"
   ];
   static List titles = const [
-    Radius.circular(0),
-    Radius.circular(30),
-    Radius.circular(0),
-    Radius.circular(30),
-    Radius.circular(30),
-    Radius.circular(30),
+    "Sports",
+    "Politics",
+    "Health",
+    "Business",
+    "Enviroment",
+    "Science"
   ];
 }

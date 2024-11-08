@@ -12,9 +12,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: Text("News App"),
+        title: const Text("News App"),
       ),
       body: Container(
         height: double.infinity,
@@ -31,23 +31,26 @@ class HomeScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.titleSmall,
             ),
             Expanded(
-              child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 25.w,
-                      crossAxisSpacing: 20.h,
-                      crossAxisCount: 2),
-                  itemCount: 6,
-                  itemBuilder: (context, index) {
-                    return CategoryCard(
-                      topLeft: AppConsts.radiusTopLeft[index],
-                      topRight: AppConsts.radiusTopRight[index],
-                      bottomLeft: AppConsts.radiusBottomLeft[index],
-                      bottomRight: AppConsts.radiusBottomRight[index],
-                      color: AppConsts.colors[index],
-                      title: AppConsts.titles[index],
-                      image: AppConsts.images[index],
-                    );
-                  }),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        mainAxisSpacing: 25.w,
+                        crossAxisSpacing: 20.h,
+                        crossAxisCount: 2),
+                    itemCount: 6,
+                    itemBuilder: (context, index) {
+                      return CategoryCard(
+                        topLeft: AppConsts.radiusTopLeft[index],
+                        topRight: AppConsts.radiusTopRight[index],
+                        bottomLeft: AppConsts.radiusBottomLeft[index],
+                        bottomRight: AppConsts.radiusBottomRight[index],
+                        color: AppConsts.colors[index],
+                        title: AppConsts.titles[index],
+                        image: AppConsts.images[index],
+                      );
+                    }),
+              ),
             )
           ],
         ),
