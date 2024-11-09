@@ -3,7 +3,8 @@ import 'package:news_app/screens/widgets/custom_list_tile.dart';
 import 'package:news_app/theme/app_colors.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  const CustomDrawer({required this.onSelect, super.key});
+  final Function(DrawerItem) onSelect;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +24,14 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             CustomListTile(
-                onTap: () {},
+                onTap: () => onSelect(DrawerItem.categories),
                 leading: const Icon(
                   Icons.list,
                   size: 30,
                 ),
                 title: "Categories"),
             CustomListTile(
-                onTap: () {},
+                onTap: () => onSelect(DrawerItem.settings),
                 leading: const Icon(
                   Icons.settings,
                   size: 30,
@@ -42,3 +43,5 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 }
+
+enum DrawerItem { categories, settings }
