@@ -13,7 +13,10 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onTap,
+      onTap: () {
+        onTap!();
+        Navigator.of(context).pop();
+      },
       leading: leading,
       title: Text(
         title,

@@ -4,7 +4,8 @@ import 'package:news_app/screens/widgets/category_card.dart';
 import 'package:news_app/theme/app_consts.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  const CategoriesScreen({super.key, required this.onSelect});
+  final Function(String) onSelect;
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +28,15 @@ class CategoriesScreen extends StatelessWidget {
                       crossAxisCount: 2),
                   itemCount: 6,
                   itemBuilder: (context, index) {
-                    return CategoryCard(
-                      topLeft: AppConsts.radiusTopLeft[index],
-                      topRight: AppConsts.radiusTopRight[index],
-                      bottomLeft: AppConsts.radiusBottomLeft[index],
-                      bottomRight: AppConsts.radiusBottomRight[index],
-                      color: AppConsts.colors[index],
-                      title: AppConsts.titles[index],
-                      image: AppConsts.images[index],
+                    return GestureDetector(
+                      onTap: () => onSelect(AppConsts.categoryModel[index].id),
+                      child: CategoryCard(
+                        topLeft: AppConsts.radiusTopLeft[index],
+                        topRight: AppConsts.radiusTopRight[index],
+                        bottomLeft: AppConsts.radiusBottomLeft[index],
+                        bottomRight: AppConsts.radiusBottomRight[index],
+                        categoryModel: AppConsts.categoryModel[index],
+                      ),
                     );
                   }),
             ),
