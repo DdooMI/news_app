@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/models/category_model.dart';
 import 'package:news_app/screens/widgets/category_card.dart';
 import 'package:news_app/theme/app_consts.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key, required this.onSelect});
-  final Function(String) onSelect;
+  final Function(CategoryModel) onSelect;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class CategoriesScreen extends StatelessWidget {
                   itemCount: 6,
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: () => onSelect(AppConsts.categoryModel[index].id),
+                      onTap: () => onSelect(AppConsts.categoryModel[index]),
                       child: CategoryCard(
                         topLeft: AppConsts.radiusTopLeft[index],
                         topRight: AppConsts.radiusTopRight[index],

@@ -21,17 +21,11 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           id: index.toString(),
           title: "Why are football's biggest clubs starting a new tournament?",
           publisher: "BBC news",
-          time: DateTime(
-            DateTime.now().year,
-            DateTime.now().month,
-            DateTime.now().day,
-            DateTime.now().hour,
-            DateTime.now().minute,
-          ),
+          time: DateTime.now(),
           image: "assets/NewsTest.png"));
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         SizedBox(
           height: 60.h,
@@ -61,15 +55,15 @@ class _CategoryDetailsState extends State<CategoryDetails> {
             itemCount: 10,
           ),
         ),
-        Expanded(
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              return CategoryDetailsCard(
-                newsModel: news[index],
-              );
-            },
-            itemCount: 5,
-          ),
+        ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            return CategoryDetailsCard(
+              newsModel: news[index],
+            );
+          },
+          itemCount: 5,
         )
       ],
     );

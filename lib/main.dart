@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/screens/home_screen.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
+          builder: DevicePreview.appBuilder,
           routes: {HomeScreen.routeName: (_) => const HomeScreen()},
           home: child,
           theme: AppTheme.lightTheme,

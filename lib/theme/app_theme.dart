@@ -25,7 +25,7 @@ class AppTheme {
               fontWeight: FontWeight.w500),
           bodySmall: TextStyle(
               fontSize: 15.sp,
-              color: Color(0xffA3A3A3),
+              color: const Color(0xffA3A3A3),
               fontWeight: FontWeight.w300)),
       appBarTheme: AppBarTheme(
           centerTitle: true,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:news_app/models/news_model.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class CategoryDetailsCard extends StatelessWidget {
   const CategoryDetailsCard({required this.newsModel, super.key});
@@ -9,7 +9,6 @@ class CategoryDetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateFormat dateFormat = DateFormat('hh:mm dd/MM');
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Card(
@@ -41,7 +40,7 @@ class CategoryDetailsCard extends StatelessWidget {
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                  child: Text(dateFormat.format(newsModel.time),
+                  child: Text(timeago.format(newsModel.time),
                       style: Theme.of(context).textTheme.bodySmall),
                 ),
               ],

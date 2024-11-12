@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/category_model.dart';
 import 'package:news_app/screens/category/categories_screen.dart';
 import 'package:news_app/screens/category/category_details.dart';
 import 'package:news_app/screens/settings/settings_screen.dart';
@@ -15,19 +16,37 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   DrawerItem selectScreen = DrawerItem.categories;
-  String? selectedCateId;
+  CategoryModel? selectedCate;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: CustomDrawer(
         onSelect: (p0) {
           selectScreen = p0;
-          selectedCateId = null;
+          selectedCate = null;
           setState(() {});
         },
       ),
       appBar: AppBar(
-        title: const Text("News App"),
+        title: selectedCate != null
+            ? Text(selectedCate!.title)
+            : selectScreen == DrawerItem.settings
+                ? const Text("Settings")
+                : const Text("News App"),
+        actions: selectedCate != null
+            ? [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.search,
+                    size: 30,
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+              ]
+            : null,
       ),
       body: Container(
         height: double.infinity,
@@ -35,12 +54,12 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(AppImages.mainBackground), fit: BoxFit.fill)),
-        child: selectedCateId != null
-            ? CategoryDetails(id: selectedCateId!)
+        child: selectedCate != null
+            ? CategoryDetails(id: selectedCate!.id)
             : selectScreen == DrawerItem.categories
                 ? CategoriesScreen(
                     onSelect: (p0) {
-                      selectedCateId = p0;
+                      selectedCate = p0;
 
                       setState(() {});
                     },
