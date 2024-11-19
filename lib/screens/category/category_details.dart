@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/screens/category/category_details_card.dart';
-import 'package:news_app/theme/app_colors.dart';
+import 'package:news_app/screens/category/source/source_choice_widget.dart';
 
 class CategoryDetails extends StatefulWidget {
   const CategoryDetails({super.key, required this.id});
@@ -13,8 +12,6 @@ class CategoryDetails extends StatefulWidget {
 }
 
 class _CategoryDetailsState extends State<CategoryDetails> {
-  int selectedSubCatId = 0;
-
   List news = List.generate(
       5,
       (index) => NewsModel(
@@ -27,34 +24,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        SizedBox(
-          height: 60.h,
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
-                child: ChoiceChip(
-                  onSelected: (value) {
-                    selectedSubCatId = index;
-                    setState(() {});
-                  },
-                  label: Text("choice $index"),
-                  selected: index == selectedSubCatId,
-                  showCheckmark: false,
-                  labelStyle: index == selectedSubCatId
-                      ? Theme.of(context).textTheme.bodyMedium
-                      : null,
-                  selectedColor: AppColors.primary,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.r),
-                      side: BorderSide(color: AppColors.primary)),
-                ),
-              );
-            },
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-          ),
-        ),
+        SourceChoiceWidget(categoryId: widget.id),
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

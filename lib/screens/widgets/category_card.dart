@@ -10,6 +10,7 @@ class CategoryCard extends StatelessWidget {
       required this.bottomLeft,
       required this.bottomRight,
       required this.categoryModel,
+      this.entertainment,
       super.key});
 
   Radius topLeft;
@@ -17,6 +18,7 @@ class CategoryCard extends StatelessWidget {
   Radius bottomLeft;
   Radius bottomRight;
   CategoryModel categoryModel;
+  final String? entertainment;
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +34,28 @@ class CategoryCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            categoryModel.image,
-            height: 120.h,
-            width: 130.w,
-            fit: BoxFit.contain,
+          Container(
+            margin: EdgeInsets.only(bottom: 10),
+            child: Image.asset(
+              categoryModel.image,
+              height: 100.h,
+              width: 130.w,
+              fit: BoxFit.contain,
+            ),
           ),
           Text(
             categoryModel.title,
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall!
-                .copyWith(color: Colors.white),
+            style: entertainment != 'entertainment'
+                ? Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .copyWith(color: Colors.white)
+                : Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Colors.white,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w400),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           )
         ],
       ),
