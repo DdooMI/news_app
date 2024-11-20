@@ -4,8 +4,8 @@ import 'package:news_app/models/news_model.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class CategoryDetailsCard extends StatelessWidget {
-  const CategoryDetailsCard({required this.newsModel, super.key});
-  final NewsModel newsModel;
+  const CategoryDetailsCard({required this.newsArticl, super.key});
+  final Articles newsArticl;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CategoryDetailsCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              newsModel.image,
+              newsArticl.urlToImage ?? "",
               height: 230.h,
               width: double.infinity,
               fit: BoxFit.fill,
@@ -25,11 +25,11 @@ class CategoryDetailsCard extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 10.h),
               child: Text(
-                newsModel.publisher,
+                newsArticl.author ?? "",
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
-            Text(newsModel.title,
+            Text(newsArticl.title ?? "",
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
@@ -40,7 +40,9 @@ class CategoryDetailsCard extends StatelessWidget {
                 Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                  child: Text(timeago.format(newsModel.time),
+                  child: Text(
+                      timeago
+                          .format(DateTime.parse(newsArticl.publishedAt ?? "")),
                       style: Theme.of(context).textTheme.bodySmall),
                 ),
               ],

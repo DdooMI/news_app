@@ -34,13 +34,13 @@ class CategoryCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            margin: EdgeInsets.only(bottom: 10),
-            child: Image.asset(
-              categoryModel.image,
-              height: 100.h,
-              width: 130.w,
-              fit: BoxFit.contain,
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(bottom: 10),
+              child: Image.asset(
+                categoryModel.image,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           Text(
@@ -52,7 +52,7 @@ class CategoryCard extends StatelessWidget {
                     .copyWith(color: Colors.white)
                 : Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: Colors.white,
-                    fontSize: 20.sp,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w400),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
