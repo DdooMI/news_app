@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/screens/category/news/news_widget.dart';
 import 'package:news_app/screens/category/source/source_choice_widget.dart';
 
 class CategoryDetails extends StatefulWidget {
@@ -16,7 +15,6 @@ class _CategoryDetailsState extends State<CategoryDetails> {
     return ListView(
       children: [
         SourceChoiceWidget(categoryId: widget.id),
-        NewsWidget(sourceId: widget.id)
       ],
     );
   }

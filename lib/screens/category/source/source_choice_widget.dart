@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/services.dart';
 import 'package:news_app/models/sources_model.dart';
+import 'package:news_app/screens/category/news/news_widget.dart';
 import 'package:news_app/theme/app_colors.dart';
 
 class SourceChoiceWidget extends StatefulWidget {
@@ -24,7 +25,7 @@ class _SourceChoiceWidgetState extends State<SourceChoiceWidget> {
             return SizedBox(
               height: 70.h,
               child: const Center(
-                child: Expanded(child: CircularProgressIndicator()),
+                child: CircularProgressIndicator(),
               ),
             );
           } else if (snapshot.hasError) {
@@ -40,33 +41,39 @@ class _SourceChoiceWidgetState extends State<SourceChoiceWidget> {
           if (selectedSubCatId == null && sources.isNotEmpty) {
             selectedSubCatId = sources[0].id;
           }
-          return SizedBox(
-            height: 70.h,
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
-                  child: ChoiceChip(
-                    onSelected: (value) {
-                      selectedSubCatId = sources[index].id;
-                      setState(() {});
-                    },
-                    label: Text(sources[index].name ?? ''),
-                    selected: sources[index].id == selectedSubCatId,
-                    showCheckmark: false,
-                    labelStyle: sources[index].id == selectedSubCatId
-                        ? Theme.of(context).textTheme.bodyMedium
-                        : null,
-                    selectedColor: AppColors.primary,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.r),
-                        side: BorderSide(color: AppColors.primary)),
-                  ),
-                );
-              },
-              scrollDirection: Axis.horizontal,
-              itemCount: sources.length,
-            ),
+          return Column(
+            children: [
+              SizedBox(
+                height: 70.h,
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+                      child: ChoiceChip(
+                        onSelected: (value) {
+                          selectedSubCatId = sources[index].id;
+                          setState(() {});
+                        },
+                        label: Text(sources[index].name ?? ''),
+                        selected: sources[index].id == selectedSubCatId,
+                        showCheckmark: false,
+                        labelStyle: sources[index].id == selectedSubCatId
+                            ? Theme.of(context).textTheme.bodyMedium
+                            : null,
+                        selectedColor: AppColors.primary,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.r),
+                            side: BorderSide(color: AppColors.primary)),
+                      ),
+                    );
+                  },
+                  scrollDirection: Axis.horizontal,
+                  itemCount: sources.length,
+                ),
+              ),
+              NewsWidget(sourceId: selectedSubCatId ?? "")
+            ],
           );
         });
   }

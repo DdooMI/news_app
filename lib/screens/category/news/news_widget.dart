@@ -16,7 +16,7 @@ class NewsWidget extends StatelessWidget {
             return SizedBox(
               height: 70.h,
               child: const Center(
-                child: Expanded(child: CircularProgressIndicator()),
+                child: CircularProgressIndicator(),
               ),
             );
           } else if (snapshot.hasError) {

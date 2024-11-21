@@ -16,11 +16,11 @@ class CategoryDetailsCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
+            Image.network(
               newsArticl.urlToImage ?? "",
               height: 230.h,
               width: double.infinity,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
             Padding(
               padding: EdgeInsets.only(top: 10.h),
