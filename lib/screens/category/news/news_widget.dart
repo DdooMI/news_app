@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/api/services.dart';
 import 'package:news_app/models/news_model.dart';
-import 'package:news_app/screens/category/category_details_card.dart';
+import 'package:news_app/screens/category/news_details_view.dart';
+import 'package:news_app/screens/widgets/category_details_card.dart';
 
 class NewsWidget extends StatelessWidget {
   const NewsWidget({required this.sourceId, super.key});
@@ -33,8 +34,13 @@ class NewsWidget extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return CategoryDetailsCard(
-                newsArticl: news[index],
+              return GestureDetector(
+                onTap: () => Navigator.of(context).pushNamed(
+                    NewsDetailsView.routeName,
+                    arguments: news[index]),
+                child: CategoryDetailsCard(
+                  newsArticl: news[index],
+                ),
               );
             },
             itemCount: news.length,

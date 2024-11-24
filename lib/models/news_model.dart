@@ -1,3 +1,5 @@
+import 'package:news_app/models/sources_model.dart';
+
 class NewsModel {
   String? status;
   int? totalResults;
@@ -16,20 +18,10 @@ class NewsModel {
   static List<NewsModel> fromList(List<Map<String, dynamic>> list) {
     return list.map(NewsModel.fromJson).toList();
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["status"] = status;
-    _data["totalResults"] = totalResults;
-    if (articles != null) {
-      _data["articles"] = articles?.map((e) => e.toJson()).toList();
-    }
-    return _data;
-  }
 }
 
 class Articles {
-  Source? source;
+  Sources? source;
   String? author;
   String? title;
   String? description;
@@ -49,7 +41,7 @@ class Articles {
       this.content});
 
   Articles.fromJson(Map<String, dynamic> json) {
-    source = json["source"] == null ? null : Source.fromJson(json["source"]);
+    source = json["source"] == null ? null : Sources.fromJson(json["source"]);
     author = json["author"];
     title = json["title"];
     description = json["description"];
@@ -61,43 +53,5 @@ class Articles {
 
   static List<Articles> fromList(List<Map<String, dynamic>> list) {
     return list.map(Articles.fromJson).toList();
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    if (source != null) {
-      _data["source"] = source?.toJson();
-    }
-    _data["author"] = author;
-    _data["title"] = title;
-    _data["description"] = description;
-    _data["url"] = url;
-    _data["urlToImage"] = urlToImage;
-    _data["publishedAt"] = publishedAt;
-    _data["content"] = content;
-    return _data;
-  }
-}
-
-class Source {
-  String? id;
-  String? name;
-
-  Source({this.id, this.name});
-
-  Source.fromJson(Map<String, dynamic> json) {
-    id = json["id"];
-    name = json["name"];
-  }
-
-  static List<Source> fromList(List<Map<String, dynamic>> list) {
-    return list.map(Source.fromJson).toList();
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["id"] = id;
-    _data["name"] = name;
-    return _data;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/screens/category/news_details_view.dart';
 import 'package:news_app/screens/home_screen.dart';
 import 'package:news_app/theme/app_theme.dart';
 
@@ -21,7 +22,10 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           builder: DevicePreview.appBuilder,
-          routes: {HomeScreen.routeName: (_) => const HomeScreen()},
+          routes: {
+            HomeScreen.routeName: (_) => const HomeScreen(),
+            NewsDetailsView.routeName: (_) => const NewsDetailsView()
+          },
           home: child,
           theme: AppTheme.lightTheme,
         );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/category_model.dart';
+import 'package:news_app/models/news_model.dart';
 import 'package:news_app/screens/category/categories_screen.dart';
 import 'package:news_app/screens/category/category_details.dart';
 import 'package:news_app/screens/settings/settings_screen.dart';
@@ -17,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   DrawerItem selectScreen = DrawerItem.categories;
   CategoryModel? selectedCate;
+  Articles? selectedNews;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onSelect: (p0) {
           selectScreen = p0;
           selectedCate = null;
+          selectedNews = null;
           setState(() {});
         },
       ),
