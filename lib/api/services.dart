@@ -23,4 +23,13 @@ class Services {
     var json = jsonDecode(body);
     return NewsModel.fromJson(json);
   }
+
+  static Future<NewsModel> searchNews(String searchQ) async {
+    var url = Uri.https(ApiConsts.baseUrl, ApiConsts.newsEndpoint,
+        {'apiKey': ApiConsts.apiKey, 'q': searchQ});
+    var response = await http.get(url);
+    String body = response.body;
+    var json = jsonDecode(body);
+    return NewsModel.fromJson(json);
+  }
 }

@@ -36,7 +36,7 @@ class CategoryCard extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              margin: EdgeInsets.only(bottom: 10),
+              margin: const EdgeInsets.only(bottom: 10),
               child: Image.asset(
                 categoryModel.image,
                 fit: BoxFit.contain,

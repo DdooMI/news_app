@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
       Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
     });
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage(AppImages.splash), fit: BoxFit.fill)),
       child: const Scaffold(

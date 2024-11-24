@@ -3,6 +3,7 @@ import 'package:news_app/models/category_model.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/screens/category/categories_screen.dart';
 import 'package:news_app/screens/category/category_details.dart';
+import 'package:news_app/screens/search/search_screen.dart';
 import 'package:news_app/screens/settings/settings_screen.dart';
 import 'package:news_app/screens/widgets/custom_drawer.dart';
 import 'package:news_app/theme/app_images.dart';
@@ -39,7 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: selectedCate != null
             ? [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(SearchScreen.routeName);
+                  },
                   icon: const Icon(
                     Icons.search,
                     size: 30,
