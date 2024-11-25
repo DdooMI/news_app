@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/models/category_model.dart';
+import 'package:news_app/provider/localization_provider.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class CategoryCard extends StatelessWidget {
@@ -46,14 +48,16 @@ class CategoryCard extends StatelessWidget {
           Text(
             categoryModel.title,
             style: entertainment != 'entertainment'
-                ? Theme.of(context)
-                    .textTheme
-                    .titleSmall!
-                    .copyWith(color: Colors.white)
-                : Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Colors.white,
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w400),
+                ? Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 22)
+                : Provider.of<LocalizationProvider>(context).appLocal == "ar"
+                    ? Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 22)
+                    : Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 18.sp, fontWeight: FontWeight.w400),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           )

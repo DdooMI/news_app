@@ -35,14 +35,22 @@ class NewsDetailsView extends StatelessWidget {
               padding: EdgeInsets.only(top: 10.h),
               child: Text(
                 news.author ?? "",
-                style: Theme.of(context).textTheme.bodySmall,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .copyWith(fontSize: 15.sp),
               ),
             ),
             Text(news.title ?? "",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(fontSize: 18)),
+                style: Theme.of(context).textTheme.titleSmall),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text('''${news.content}''',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall!
+                      .copyWith(fontSize: 18.sp)),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -51,15 +59,13 @@ class NewsDetailsView extends StatelessWidget {
                       EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
                   child: Text(
                       timeago.format(DateTime.parse(news.publishedAt ?? "")),
-                      style: Theme.of(context).textTheme.bodySmall),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleSmall!
+                          .copyWith(fontSize: 15.sp)),
                 ),
               ],
             ),
-            Text('''${news.content}''',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall!
-                    .copyWith(fontSize: 18.sp)),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -77,7 +83,7 @@ class NewsDetailsView extends StatelessWidget {
                       }
                     },
                     child: Text("complete article",
-                        style: Theme.of(context).textTheme.bodyLarge),
+                        style: Theme.of(context).textTheme.titleSmall),
                   ),
                 ),
               ],

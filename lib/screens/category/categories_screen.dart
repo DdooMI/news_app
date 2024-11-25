@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/models/category_model.dart';
 import 'package:news_app/screens/widgets/category_card.dart';
@@ -10,36 +11,36 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<CategoryModel> categoryModel = const [
+    List<CategoryModel> categoryModel = [
       CategoryModel(
           id: "sports",
           image: "assets/ball.png",
-          title: "Sports",
+          title: AppLocalizations.of(context)!.sports,
           color: Color(0xffc91c22)),
       CategoryModel(
           id: "general",
           image: "assets/Politics.png",
-          title: "general",
+          title: AppLocalizations.of(context)!.genral,
           color: Color(0xff003e90)),
       CategoryModel(
           id: "health",
           image: "assets/health.png",
-          title: "Health",
+          title: AppLocalizations.of(context)!.health,
           color: Color(0xffed1e79)),
       CategoryModel(
           id: "business",
           image: "assets/bussines.png",
-          title: "Business",
+          title: AppLocalizations.of(context)!.business,
           color: Color(0xffcf7e48)),
       CategoryModel(
           id: "entertainment",
           image: "assets/environment.png",
-          title: "Entertainment",
+          title: AppLocalizations.of(context)!.entertainment,
           color: Color(0xff4882cf)),
       CategoryModel(
           id: "science",
           image: "assets/science.png",
-          title: "Science",
+          title: AppLocalizations.of(context)!.science,
           color: Color(0xfff2d352))
     ];
     return Padding(
@@ -48,7 +49,7 @@ class CategoriesScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Pick your category\nof interest",
+            AppLocalizations.of(context)!.pick,
             style: Theme.of(context).textTheme.titleSmall,
           ),
           Expanded(

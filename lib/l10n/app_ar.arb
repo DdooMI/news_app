@@ -1,0 +1,18 @@
+{
+    "language":"لغة",
+    "arabic":"العربية",
+    "english":"الانجليزية",
+    "darkMode":"الوضع المظلم",
+    "setings":"الاعدادات",
+    "categories":"المجالات",
+    "genral":"عام",
+    "sports":"الرياضة",
+    "health":"الصحة",
+    "business":"الاعمال",
+    "entertainment":"الترفيه",
+    "science":"علوم",
+    "pick":"اختر مجال من اهتمامك",
+     "search":"بحث",
+    "notFound":"لا يوجد",
+    "newsApp":"!News App"
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchWidget extends StatelessWidget {
@@ -10,32 +11,39 @@ class SearchWidget extends StatelessWidget {
     return Container(
       height: 50.h,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(20)),
+          color: Theme.of(context).colorScheme.onPrimary,
+          borderRadius: BorderRadius.circular(20)),
       child: TextFormField(
         controller: controller,
         cursorHeight: 25.h,
         decoration: InputDecoration(
-            prefixIcon: const Icon(
+            prefixIcon: Icon(
               Icons.search,
-              color: Colors.black,
-              size: 30,
+              color: Theme.of(context).colorScheme.onSecondary,
+              size: 25,
             ),
-            hintText: "Search....",
-            hintStyle: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(fontSize: 18, color: const Color(0xFF6B6B6B)),
+            hintText: "${AppLocalizations.of(context)!.search}....",
+            hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                fontSize: 18, color: Theme.of(context).colorScheme.onSecondary),
+            disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.onSecondary),
+                borderRadius: BorderRadius.circular(20)),
             border: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 2),
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.onSecondary),
                 borderRadius: BorderRadius.circular(20)),
             focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 2),
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.onSecondary),
                 borderRadius: BorderRadius.circular(20)),
             enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 2),
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.onSecondary),
                 borderRadius: BorderRadius.circular(20)),
             focusedErrorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.black, width: 2),
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.onSecondary),
                 borderRadius: BorderRadius.circular(20))),
       ),
     );

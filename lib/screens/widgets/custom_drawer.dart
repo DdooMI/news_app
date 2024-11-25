@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:news_app/screens/widgets/custom_list_tile.dart';
 import 'package:news_app/theme/app_colors.dart';
 
@@ -9,7 +10,7 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       child: SizedBox(
         width: 320,
         child: Column(
@@ -19,24 +20,26 @@ class CustomDrawer extends StatelessWidget {
               color: AppColors.primary,
               alignment: Alignment.center,
               child: Text(
-                "News App!",
+                AppLocalizations.of(context)!.newsApp,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
             CustomListTile(
                 onTap: () => onSelect(DrawerItem.categories),
-                leading: const Icon(
+                leading: Icon(
                   Icons.list,
                   size: 30,
+                  color: Theme.of(context).colorScheme.surface,
                 ),
-                title: "Categories"),
+                title: AppLocalizations.of(context)!.categories),
             CustomListTile(
                 onTap: () => onSelect(DrawerItem.settings),
-                leading: const Icon(
+                leading: Icon(
                   Icons.settings,
                   size: 30,
+                  color: Theme.of(context).colorScheme.surface,
                 ),
-                title: "Settings")
+                title: AppLocalizations.of(context)!.setings)
           ],
         ),
       ),

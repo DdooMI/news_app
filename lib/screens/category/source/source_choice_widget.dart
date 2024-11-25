@@ -42,7 +42,13 @@ class _SourceChoiceWidgetState extends State<SourceChoiceWidget> {
                   showCheckmark: false,
                   labelStyle: widget.sources[index].id == selectedSource
                       ? Theme.of(context).textTheme.bodyMedium
-                      : null,
+                      : Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(fontSize: 15),
+                  backgroundColor: widget.sources[index].id == selectedSource
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onPrimary,
                   selectedColor: AppColors.primary,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.r),

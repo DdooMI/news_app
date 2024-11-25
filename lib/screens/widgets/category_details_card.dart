@@ -12,7 +12,7 @@ class CategoryDetailsCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Card(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.onPrimary,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -29,11 +29,14 @@ class CategoryDetailsCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
-            Text(newsArticl.title ?? "",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(fontSize: 18)),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Text(newsArticl.title ?? "",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontSize: 18)),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

@@ -22,9 +22,10 @@ class CustomListTile extends StatelessWidget {
         title,
         style: Theme.of(context).textTheme.bodyLarge,
       ),
-      trailing: const Icon(
+      trailing: Icon(
         Icons.arrow_forward_ios_rounded,
         size: 30,
+        color: Theme.of(context).colorScheme.surface,
       ),
     );
   }

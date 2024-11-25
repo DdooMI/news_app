@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:news_app/models/category_model.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/screens/category/categories_screen.dart';
@@ -35,8 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
         title: selectedCate != null
             ? Text(selectedCate!.title)
             : selectScreen == DrawerItem.settings
-                ? const Text("Settings")
-                : const Text("News App"),
+                ? Text(AppLocalizations.of(context)!.setings)
+                : Text(AppLocalizations.of(context)!.categories),
         actions: selectedCate != null
             ? [
                 IconButton(
