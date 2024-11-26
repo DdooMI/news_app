@@ -1,0 +1,18 @@
+{
+    "language":"Language",
+    "arabic":"Arabic",
+    "english":"English",
+    "darkMode":"Dark Mode",
+    "setings":"Settings",
+    "categories":"Categories",
+    "genral":"General",
+    "sports":"Sports",
+    "health":"Health",
+    "business":"Business",
+    "entertainment":"Entertainment",
+    "science":"Science",
+    "pick":"Pick your category of interest",
+    "search":"Search",
+    "notFound":"Not Found",
+    "newsApp":"News App!"
+}

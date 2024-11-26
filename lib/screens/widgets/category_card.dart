@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/models/category_model.dart';
+import 'package:news_app/provider/localization_provider.dart';
+import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class CategoryCard extends StatelessWidget {
@@ -8,50 +11,57 @@ class CategoryCard extends StatelessWidget {
       required this.topRight,
       required this.bottomLeft,
       required this.bottomRight,
-      required this.color,
-      required this.image,
-      required this.title,
+      required this.categoryModel,
+      this.entertainment,
       super.key});
 
   Radius topLeft;
   Radius topRight;
   Radius bottomLeft;
   Radius bottomRight;
-  String image;
-  String title;
-  Color color;
+  CategoryModel categoryModel;
+  final String? entertainment;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.only(
-                topLeft: topLeft,
-                topRight: topRight,
-                bottomLeft: bottomLeft,
-                bottomRight: bottomRight)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              image,
-              height: 120.h,
-              width: 130.w,
-              fit: BoxFit.contain,
+    return Container(
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+          color: categoryModel.color,
+          borderRadius: BorderRadius.only(
+              topLeft: topLeft,
+              topRight: topRight,
+              bottomLeft: bottomLeft,
+              bottomRight: bottomRight)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              child: Image.asset(
+                categoryModel.image,
+                fit: BoxFit.contain,
+              ),
             ),
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall!
-                  .copyWith(color: Colors.white),
-            )
-          ],
-        ),
+          ),
+          Text(
+            categoryModel.title,
+            style: entertainment != 'entertainment'
+                ? Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 22)
+                : Provider.of<LocalizationProvider>(context).appLocal == "ar"
+                    ? Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 22)
+                    : Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 18.sp, fontWeight: FontWeight.w400),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          )
+        ],
       ),
     );
   }
