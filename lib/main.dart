@@ -8,6 +8,7 @@ import 'package:news_app/provider/localization_provider.dart';
 import 'package:news_app/screens/category/news_details_view.dart';
 import 'package:news_app/screens/home_screen.dart';
 import 'package:news_app/screens/search/search_screen.dart';
+import 'package:news_app/screens/splash/splash_screen.dart';
 import 'package:news_app/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
           themeMode: Provider.of<DarkProvider>(context).appThemeMode,
         );
       },
-      child: const HomeScreen(),
+      child: const SplashScreen(),
     );
   }
 }
